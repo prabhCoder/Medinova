@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head style="margin-bottom:50px;">
+	<!-- HEADER -->
+	<h1>LOGIN</h1>
+	
+	<div id="navbar" >
+              <ul id="top-menu" >
+					<li ><a href="index.html">Home</a></li>
+              </ul>           
+            </div><!--/.nav-collapse -->
+	
+
+</h:head>
+<h:body>
+<hr/>
+	<h:panelGrid columns="2" cellpadding="5" width="100%"
+		style="margin-left:100px;margin-right:50px;margin-top:80px;">
+		<h:form id="formId" name="formId">
+			<p:panel header="Patient Login"
+				style="margin-bottom:10px;background-color:#FFD133;" id="panel">
+				<p:messages id="msgs" />
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel value="Username" for="username"></p:outputLabel>
+					<p:inputText name="username" id="username" required="true"
+						requiredMessage="Please enter username"
+						value="#{patientProfile.username}">
+						<f:validateLength minimum="5" />
+					</p:inputText>
+					<p:outputLabel value="Password" for="password"></p:outputLabel>
+					<p:inputText name="password" id="password" required="true"
+						requiredMessage="Please enter password"
+						value="#{patientProfile.password}"></p:inputText>
+
+					<p:commandButton value="Submit" update="panel"
+						action="#{dBController.patientAuthentication}" id="buttonId" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+
+		<h:form id="formId1" name="formId1">
+			<p:panel header="Doctor Login"
+				style="margin-left:100px;margin-right:200px;background-color:#FFD133;"
+				id="panel">
+				<p:messages id="msgs" />
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel value="Username" for="username"></p:outputLabel>
+					<p:inputText name="username" id="username" required="true"
+						requiredMessage="Please enter username"
+						value="#{docProfile.username}">
+						<f:validateLength minimum="5" />
+					</p:inputText>
+					<p:outputLabel value="Password" for="password"></p:outputLabel>
+					<p:inputText name="password" id="password" required="true"
+						requiredMessage="Please enter password"
+						value="#{docProfile.password}"></p:inputText>
+
+					<p:commandButton value="Submit" update="panel" 
+						action="#{dBController.doctorAuthentication}" id="buttonId" />
+				</h:panelGrid>
+			</p:panel>
+		
+			</h:form>
+	</h:panelGrid>
+	
+	<br/><br/><br/>
+<hr/>
+</h:body>
+
+</html>

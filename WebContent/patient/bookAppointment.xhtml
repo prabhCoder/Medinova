@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head style="margin-bottom:50px;">
+	<!-- HEADER -->
+	
+	<h1>Appointment Booking</h1>
+
+</h:head>
+<h:body>
+<hr/>
+	<h:form id="form" name="form">
+		<p:panel header="Book Appointment"
+			style="background-color:#FFD133;margin-bottom:10px; margin-top:50px;margin-left:300px;margin-right:300px;font-size:20px;text-align:center;display:block">
+			<p:messages id="msgs"></p:messages>
+			<h:panelGrid columns="2" cellpadding="5" style="text-align:left;">
+				<p:outputLabel
+					value="Name &#160;&#160;&#160;&#160;&#160;&#160;"
+					style="color:#129894"></p:outputLabel>
+				<p:inputText value="#{dBController.patientName}" id="name"
+					required="true" requiredMessage="Please enter name" />
+				<p:outputLabel
+					value="Email"
+					style="color:#129894"></p:outputLabel>
+				<p:inputText value="#{dBController.email}" id="email" required="true"
+					requiredMessage="Please enter email" />
+				<p:outputLabel value="Birth Date" style="color:#129894"></p:outputLabel>
+				<p:calendar value="#{dBController.birthDate}" id="birthDate"
+					requiredMessage="Please select birth date" required="true" />
+				<p:outputLabel value="Phone" style="color:#129894"></p:outputLabel>
+				<p:inputText value="#{dBController.phone}" id="phone"
+					requiredMessage="Please enter phone" required="true" />
+				<p:outputLabel value="Appointment Date" style="color:#129894"></p:outputLabel>
+				<p:calendar value="#{dBController.appointmentDate}" id="appDate" 
+					requiredMessage="Please select appointment date" required="true" />
+				<p:outputLabel value="Select Department" style="color:#129894"></p:outputLabel>
+				<p:selectOneMenu id="deptId" value="#{dBController.deptId}"
+					
+					>
+					<f:selectItem itemLabel="Select Department" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Cardiology" itemValue="Cardiology"
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Orthopaedics" itemValue="Orthopaedics"
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Dental" itemValue="Dental"
+						noSelectionOption="true" />
+				</p:selectOneMenu>
+				<p:outputLabel value="Subject" style="color:#129894"></p:outputLabel>
+				<p:inputText value="#{dBController.subject}" id="subject" />
+				<p:outputLabel value="What would you like to tell us?"
+					style="color:#129894"></p:outputLabel>
+				<p:inputTextarea value="#{dBController.note}" id="note" />
+				<h:commandButton value="Submit" action="#{dBController.submitForm}" ></h:commandButton>
+			</h:panelGrid>
+		</p:panel>
+		
+	</h:form>
+	<h:form >
+<h:commandButton value="Back" action="patientLoginSuccess.xhtml?faces-redirect=true" style="color:#129894;font-size:20px; border-radius: 25px;margin-left:300px;"
+					id="back" ></h:commandButton>
+					</h:form>
+		<p:dialog modal="true" resizable="false" header="Values"
+			widgetVar="dlg" showEffect="fold">
+			<p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+				<h:outputText value="Popup:" />
+				<h:outputText value="#{dBController.birthDate}">
+					<f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" locale="en"
+						timeZone="IST" />
+				</h:outputText>
+				<h:outputText value="#{dBController.appointmentDate}">
+					<f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" locale="en"
+						timeZone="IST" />
+				</h:outputText>
+
+			</p:panelGrid>
+		</p:dialog>
+		<br/>
+		<hr/>
+</h:body>
+</html>

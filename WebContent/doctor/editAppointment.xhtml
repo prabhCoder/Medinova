@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head style="margin-bottom:50px;">
+	<!-- HEADER -->
+	
+	<h1>Approve/ Disapprove appointment</h1>
+</h:head>
+<h:body >
+<hr/>
+<br/>
+<p:outputLabel value="Chose Select Status to approve or disapprove the appointment."></p:outputLabel>
+
+	<h:form id="form" name="form">
+	<br/>
+	<p:panel style="margin-left:20px;margin-right:20px;background-color:#FFD133">
+		<p:dataTable var="a" value="#{dBController.appointments}"
+			style="background-color:#FFD133;margin-bottom:10px; margin-top:50px;margin-left:50px;margin-right:50px;font-size:20px;text-align:center;display:block">
+
+			<p:column headerText="Patient Id" style="font-size:15px;">
+				<h:outputText value="#{a.id}" id="id"  />
+			</p:column>
+
+			<p:column headerText="Name" style="font-size:15px;">
+				<h:outputText value="#{a.name}" id="name" />
+			</p:column>
+
+			<p:column headerText="Email" style="font-size:15px;">
+				<h:outputText value="#{a.email}" id="email" />
+			</p:column>
+
+			<p:column headerText="Birth Date" style="font-size:15px;">
+				<h:outputText value="#{a.birthDate}" id="bdate" />
+			</p:column>
+
+			<p:column headerText="Phone" style="font-size:15px;">
+				<h:outputText value="#{a.phone}" id="phone" />
+			</p:column>
+
+			<p:column headerText="Appointment Date" style="font-size:15px;">
+				<h:outputText value="#{a.appDate}" id="appdate" />
+			</p:column>
+
+			<p:column headerText="Department" style="font-size:15px;">
+				<h:outputText value="#{a.dept}" id="dept" />
+			</p:column>
+
+			<p:column headerText="Subject" style="font-size:15px;">
+				<h:outputText value="#{a.subject}" id="subject" />
+			</p:column>
+
+			<p:column headerText="Description" style="font-size:15px;">
+				<h:outputText value="#{a.subject}" id="desc" />
+			</p:column>
+
+		</p:dataTable>
+		<br/>
+		<br/>
+		
+<p:outputLabel value="Chose status: "></p:outputLabel>
+		<p:selectOneMenu id="sid" value="#{dBController.status}"
+			style="margin-left:50px;">
+			<f:selectItem itemLabel="Select status" itemValue=""
+				noSelectionOption="true" />
+			<f:selectItem itemLabel="Approve" itemValue="Approve"
+				noSelectionOption="true" />
+			<f:selectItem itemLabel="Disapprove" itemValue="Disapprove"
+				noSelectionOption="true" />
+		</p:selectOneMenu>
+		<br />
+		<br />
+		<h:commandButton value="Save"
+			style="color:#129894;font-size:20px; border-radius: 25px;margin-left:50px;"
+			id="save" 
+			action="#{dBController.editAppointmentStatus}"></h:commandButton>
+		<br /><br/><br/>
+		 <h:commandButton value="Back"
+			action="viewAppointment.xhtml?faces-redirect=true"
+			style="color:#129894;font-size:20px; border-radius: 25px;margin-left:1000px;"
+			id="back"></h:commandButton>
+			</p:panel>
+	</h:form>
+
+<br/><br/><br/><br/><br/><br/><hr/>
+
+
+</h:body>
+</html>
