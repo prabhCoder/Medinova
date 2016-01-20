@@ -4,6 +4,6 @@
 # 2. It also provides with different departmental services and features of hospital.
 # 3. Have updated knowledge of doctors achievements in this hospital in the previous years through the Medinova blog.
 # 4. View the contact and emergency information.
-# 5. Lgin the portal and book an appointment with a specific departmental doctor on a particular date/ time. 
+# 5. Login the portal and book an appointment with a specific departmental doctor on a particular date/ time. 
 
 # Doctors can login their profile and can view or accept/ reject the appointment as per his/her schedule of that day.
